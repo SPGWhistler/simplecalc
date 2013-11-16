@@ -7,3 +7,6 @@
 .input-lg {
 	font-size: 44px;
 }
+.btn-lg {
+	border-radius: 0;
+}
