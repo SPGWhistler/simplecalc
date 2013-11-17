@@ -9,6 +9,7 @@ $db = $m->simplecalc;
 
 // select a collection (analogous to a relational database's table)
 $accounts = $db->accounts;
+//$accounts->ensureIndex(array("account_name" => 1), array("unique" => 1));
 
 $output = array("error" => TRUE);
 if (isset($_GET['action']) && $_GET['action'] !== '') {
@@ -19,10 +20,20 @@ if (isset($_GET['action']) && $_GET['action'] !== '') {
 			$balance = (isset($_GET['balance']) && $_GET['balance'] !== '') ? $_GET['balance'] : 0;
 			$addResult = addAccount($account_name, $balance);
 			$balance = getBalance($account_name);
-			if ($addResult && $balance) {
+			if ($addResult && $balance !== FALSE) {
 				$output = array("balance" => $balance);
 			}
 		}
+		break;
+	case 'deleteaccount':
+		if (isset($_GET['account_name']) && $_GET['account_name'] !== '') {
+			$account_name = $_GET['account_name'];
+			$deleteResult = deleteAccount($account_name);
+			if ($deleteResult) {
+				$output = array("success" => TRUE);
+			}
+		}
+		break;
 		break;
 	case 'getbalance':
 		if (isset($_GET['account_name']) && $_GET['account_name'] !== '') {
@@ -69,7 +80,19 @@ function addAccount ($account_name, $balance = 0) {
 	);
 	try {
 		$accounts->insert($document);
-		$accounts->ensureIndex(array("account_name" => 1), array("unique" => 1));
+		return TRUE;
+	} catch (Exception $e) {
+		return FALSE;
+	}
+}
+
+function deleteAccount ($account_name) {
+	global $accounts;
+	$document = array(
+		"account_name" => $account_name
+	);
+	try {
+		$accounts->remove($document);
 		return TRUE;
 	} catch (Exception $e) {
 		return FALSE;
