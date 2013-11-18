@@ -1,3 +1,6 @@
+body {
+	overflow-x: hidden;
+}
 .main-container {
 	padding: 0 15px;
 }
@@ -6,7 +9,11 @@
 }
 .input-lg {
 	font-size: 44px;
+	border-radius: 0;
 }
 .btn-lg {
 	border-radius: 0;
+}
+.ui-loader {
+	display: none;
 }
