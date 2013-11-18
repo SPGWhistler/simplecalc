@@ -3,7 +3,7 @@ $(document).ready(function () {
 	var height, html5audio, sourceel;
 	document.body.addEventListener('touchstart', function (e) { e.preventDefault(); });
 	height = $(window).height();
-	$('.btn, #display').css('height', (height / 5) + 'px');
+	$('#clear, #save, .number, #display').css('height', (height / 5) + 'px');
 	$('#clear').on('vclick', function () {
 		//html5audio.playclip();
 		$('#display').val('');

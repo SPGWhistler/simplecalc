@@ -17,3 +17,6 @@ body {
 .ui-loader {
 	display: none;
 }
+#panel {
+	background-image: -webkit-gradient(linear,left top,right top,from(#222),to(#444));
+}

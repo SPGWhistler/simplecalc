@@ -16,8 +16,12 @@
 	</head>
 	<body>
 		<div data-role="page" class="main-container">
-			<div data-role="panel" id="panel">
-				asdf
+			<div data-role="panel" id="panel" data-display="overlay">
+				<div class="row">
+					<div class="col-xs-12">
+						<button type="button" class="btn btn-block btn-default">Clear</button>
+					</div>
+				</div>
 			</div>
 			<div data-role="content">
 				<div class="row">
