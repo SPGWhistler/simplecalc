@@ -19,7 +19,8 @@
 			<div data-role="panel" id="panel" data-display="overlay">
 				<div class="row">
 					<div class="col-xs-12">
-						<button type="button" class="btn btn-block btn-default">Clear</button>
+						<h5>Account: <em><strong>Checking Bill</strong></em></h5>
+						<button id="deposit" type="button" class="btn btn-block btn-success">Add Deposit</button>
 					</div>
 				</div>
 			</div>

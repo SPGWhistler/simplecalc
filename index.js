@@ -1,4 +1,5 @@
 /*global $, alert */
+var transaction_mode = '-';
 $(document).ready(function () {
 	var height, html5audio, sourceel;
 	document.body.addEventListener('touchstart', function (e) { e.preventDefault(); });
@@ -24,7 +25,7 @@ $(document).ready(function () {
 				}
 				out = value + String(number);
 			}
-			if (out.indexOf('-') === -1) {
+			if (transaction_mode === '-' && out.indexOf('-') === -1) {
 				out = '-' + out;
 			}
 			if (out.search(/^-\d*\.\d{2}$/) !== -1) {
@@ -74,5 +75,8 @@ $(document).ready(function () {
 	});
 	$(document).on('swiperight', function () {
 		$("#panel").panel("open");
+	});
+	$('#deposit').on('vclick', function () {
+		transaction_mode = '+';
 	});
 });
